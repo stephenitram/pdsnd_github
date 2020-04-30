@@ -32,3 +32,8 @@ washington.csv
 
 DATA SOURCE
 Motivate, a bike share system provider for many major cities in the United States
+
+
+REFERENCES
+Learning materials from Udacity's "Programming for data science nanodegree"
+Online documentation on DateTime
