@@ -29,5 +29,6 @@ chigaco.csv
 new_york_city.csv
 washington.csv
 
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+
+DATA SOURCE
+Motivate, a bike share system provider for many major cities in the United States
