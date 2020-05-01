@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 
-city_data = 			{'chicago': 'chicago.csv', 'new york': 'new_york.csv',
+city_data = 			{'chicago': 'chicago.csv', 'new york city': 'new_york_city.csv',
 						'washington': 'washington.csv'}
 
 
@@ -42,7 +42,7 @@ def get_filters():
 
         # get user input for city (chicago, new york city, washington).
         if not city_found:
-            city = input('Would you like to see data for Chicago, Washington, or New York?:')
+            city = input('Would you like to see data for Chicago, Washington, or New York city?:')
             city = city.lower()
             if city not in city_data:
                 print('No data is available for this city, please select from the cities listed:')
@@ -89,6 +89,7 @@ def get_filters():
     return city, month, day,filter_by
 
 
+
 def load_data(city, month, day,filter_by):
     """
     To load data for the specified city and search by month and day if applicable.
@@ -124,6 +125,7 @@ def load_data(city, month, day,filter_by):
 
     print("\nComputed in  %s seconds." % (time.time() - start_time))
     return df
+
 
 
 def time_stats(df, month, day):
@@ -166,6 +168,7 @@ def time_stats(df, month, day):
     print('-' * 40)
 
 
+
 def station_stats(df):
     """To display the most popular stations and trip stats."""
 
@@ -204,6 +207,7 @@ def station_stats(df):
     print('-' * 40)
 
 
+
 def total_travel_time(df):
     """To display bikeshare total and average trip duration stats."""
 
@@ -223,6 +227,7 @@ def total_travel_time(df):
 
     print("\nComputed in  %s seconds." % (time.time() - start_time))
     print('-' * 40)
+
 
 
 def user_counts(df):
@@ -272,6 +277,7 @@ def user_counts(df):
     print('-' * 40)
 
 
+
 def show_raw_data(df):
     '''To print the selected data frame, 5 at a time '''
     choice = input("Would you like to see some raw data? [y/n] : ")
@@ -286,6 +292,7 @@ def show_raw_data(df):
                 choice = input("Would you like to see some raw data? [y/n] : ")
                 if choice.lower() != 'y':
                     break
+
 
 
 def main():
