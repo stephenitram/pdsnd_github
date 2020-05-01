@@ -56,7 +56,7 @@ def get_filters():
         print('\n')
 
         if filter_by == "month" or filter_by == "both" :
-            # to get user input for month ( January, February, ... , June, and All)
+            # to get user input for month of the year ( January, February, ... , June, and All)
             if not month_found:
                 month = input('Enter month to investigate \nJanuary, February, March, April, May, June, All?:')
                 month = month.title()
@@ -73,7 +73,7 @@ def get_filters():
         print('\n')
 
         if filter_by == "day" or filter_by == "both":
-            # to get user input for day of week (monday, tuesday, ... sunday, and None)
+            # to get user input for day of week (monday, tuesday, ... sunday, and All)
             day = input("Enter the day you want to investigate \nMonday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, All ?: ")
             day = day.title()
 
@@ -113,12 +113,12 @@ def load_data(city, month, day,filter_by):
 
     df['Start Hour'] = pd.DatetimeIndex(df['Start Time']).hour
 
-    # using month as filter criteria, if month is specified
+    # using month as filter criteria, whenever month is specified
     if filter_by == 'month' or filter_by == 'both':
         if month != months_of_the_year.get('All'):
             df = df[df['Start Month'] == int(months_of_the_year.get(month))]
 
-    # using day as filter criteria, if day is specified
+    # using day as filter criteria, whenever day is specified
     if filter_by == 'day' or filter_by == 'both':
         if day != days_of_the_week.get('All'):
             df = df[df['Start Day'] == int(days_of_the_week.get(day))]
