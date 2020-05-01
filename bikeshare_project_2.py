@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 
-city_data = 			{'chicago': 'chicago.csv', 'new york': 'new_york.csv',
+city_data = 			{'chicago': 'chicago.csv', 'new york city': 'new_york_city.csv',
 						'washington': 'washington.csv'}
 
 
@@ -42,7 +42,7 @@ def get_filters():
 
         # get user input for city (chicago, new york city, washington).
         if not city_found:
-            city = input('Would you like to see data for Chicago, Washington, or New York?:')
+            city = input('Would you like to see data for Chicago, Washington, or New York city?:')
             city = city.lower()
             if city not in city_data:
                 print('No data is available for this city, please select from the cities listed:')
@@ -56,7 +56,7 @@ def get_filters():
         print('\n')
 
         if filter_by == "month" or filter_by == "both" :
-            # to get user input for month ( January, February, ... , June, and All)
+            # to get user input for month of the year ( January, February, ... , June, and All)
             if not month_found:
                 month = input('Enter month to investigate \nJanuary, February, March, April, May, June, All?:')
                 month = month.title()
@@ -73,7 +73,7 @@ def get_filters():
         print('\n')
 
         if filter_by == "day" or filter_by == "both":
-            # to get user input for day of week (monday, tuesday, ... sunday, and None)
+            # to get user input for day of week (monday, tuesday, ... sunday, and All)
             day = input("Enter the day you want to investigate \nMonday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, All ?: ")
             day = day.title()
 
@@ -87,6 +87,7 @@ def get_filters():
     print('\n')
 
     return city, month, day,filter_by
+
 
 
 def load_data(city, month, day,filter_by):
@@ -112,18 +113,19 @@ def load_data(city, month, day,filter_by):
 
     df['Start Hour'] = pd.DatetimeIndex(df['Start Time']).hour
 
-    # using month as filter criteria, if month is specified
+    # using month as filter criteria, whenever month is specified
     if filter_by == 'month' or filter_by == 'both':
         if month != months_of_the_year.get('All'):
             df = df[df['Start Month'] == int(months_of_the_year.get(month))]
 
-    # using day as filter criteria, if day is specified
+    # using day as filter criteria, whenever day is specified
     if filter_by == 'day' or filter_by == 'both':
         if day != days_of_the_week.get('All'):
             df = df[df['Start Day'] == int(days_of_the_week.get(day))]
 
     print("\nComputed in  %s seconds." % (time.time() - start_time))
     return df
+
 
 
 def time_stats(df, month, day):
@@ -166,6 +168,7 @@ def time_stats(df, month, day):
     print('-' * 40)
 
 
+
 def station_stats(df):
     """To display the most popular stations and trip stats."""
 
@@ -204,6 +207,7 @@ def station_stats(df):
     print('-' * 40)
 
 
+
 def total_travel_time(df):
     """To display bikeshare total and average trip duration stats."""
 
@@ -223,6 +227,7 @@ def total_travel_time(df):
 
     print("\nComputed in  %s seconds." % (time.time() - start_time))
     print('-' * 40)
+
 
 
 def user_counts(df):
@@ -272,6 +277,7 @@ def user_counts(df):
     print('-' * 40)
 
 
+
 def show_raw_data(df):
     '''To print the selected data frame, 5 at a time '''
     choice = input("Would you like to see some raw data? [y/n] : ")
@@ -286,6 +292,7 @@ def show_raw_data(df):
                 choice = input("Would you like to see some raw data? [y/n] : ")
                 if choice.lower() != 'y':
                     break
+
 
 
 def main():
